@@ -4,12 +4,24 @@ node_js:
 env:
   global:
     - CC_TEST_REPORTER_ID=f537cee75da299feeb47a7cdf1e80681ba7b1bc274515b54e1c850a6b8749990
+services:
+  - postgresql
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
+before_install:
+  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
+  - sudo /etc/init.d/postgresql restart
 cache:
   directories: [node_modules]
 install:
   yarn
 after_success: yarn coverage
 before_script:
+  - psql -c 'create database testdb;' -U postgres
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
