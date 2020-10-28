@@ -1,10 +1,9 @@
 language: node_js
+node_js:
+  - 12
 env:
   global:
     - CC_TEST_REPORTER_ID=f537cee75da299feeb47a7cdf1e80681ba7b1bc274515b54e1c850a6b8749990
-matrix:
-  include:
-  - node_js: '12'
 cache:
   directories: [node_modules]
 install:
