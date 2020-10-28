@@ -11,7 +11,7 @@
     "postpretty": "yarn lint --fix",
     "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "runQuery": "babel-node ./src/utils/runQuery"
+    "seed": "babel-node ./src/utils/runQuery"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
