@@ -9,7 +9,7 @@
     "lint": "./node_modules/.bin/eslint ./src",
     "pretty": "prettier --write '**/*.{js,json}' '!node_modules/**'",
     "postpretty": "yarn lint --fix",
-    "test": "export NODE_ENV=test; nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register",
+    "test": "NODE_ENV=test nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "seed": "babel-node ./src/utils/seed"
   },
