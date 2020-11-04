@@ -1,14 +1,11 @@
-import {
-  dropTables,
-  createTables,
-  insertIntoTables,
-} from '../src/utils/queryFunctions';
+import { db } from "../src/models";
 
 before(async () => {
-  await createTables();
-  await insertIntoTables();
+  await db.sequelize.sync({ force: true });
+  console.log("TEST: All models were synchronized successfully.\n");
 });
 
 after(async () => {
-  await dropTables();
+  await db.sequelize.drop();
+  console.log("TEST: All tables dropped!");
 });
